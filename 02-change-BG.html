@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>change background </title>
+  <style>
+    *{
+      font-family: sans-serif;
+    }
+    body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 95vh;
+      background-color: gray;
+    }
+    button{
+      padding: 20px 70px;
+      border: 0;
+      font-size: 1.5rem;
+      border-radius: 10px;
+      background-color: black;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all ease-in-out 0.5;
+      margin-bottom: 20px;
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+      height: 100px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    button:hover {
+      background-color: rgb(27, 27, 27);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>change the background color</h1>
+    <button class="button">Change</button>
+    <button class="randomButton">Random Change</button>
+  </div>
+  
+
+  <script>
+    const buttonElement = document.querySelector('.button');
+
+    const randomButton = document.querySelector('.randomButton')
+
+    let colors = ['#e63946', '#f4a261', '#2a9d8f', '#264653', '#8a2be2', '#f72585', '#ffcc00', '#06d6a0', '#00b4d8', '#9b5de5']
+
+    let currentColorIndex = 0;
+
+    let current = false;
+    let intervalId;
+
+    buttonElement.addEventListener('click', changeBG)
+
+    function changeBG() {
+      document.body.style.backgroundColor = colors[currentColorIndex];
+
+      currentColorIndex = (currentColorIndex + 1) % colors.length
+    }
+
+    function randomFunction() {
+      if(!current) {
+        intervalId = setInterval(changeBG, 500)
+        current = true
+      } else {
+        clearInterval(intervalId)
+        current = false
+      }
+    }
+
+    randomButton.addEventListener('click', randomFunction)
+  </script>
+</body>
+</html>

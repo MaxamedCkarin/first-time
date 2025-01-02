@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>quote app</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+    .container {
+      background-color: black;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .quote-box{
+      color: #fff;
+      font-size: .7rem;
+      margin-bottom: 100px;
+      width: 550px;
+      display: flex;
+      text-align: center;
+      height: 120px;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+    .buttons-box{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 300px;
+    }
+    .buttons-box button {
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      border: 0;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .like-btn{
+      background: gray;
+      color: #fff;
+      padding: 0;
+    }
+
+    .liked-btn{
+      color: rgb(255, 15, 15);
+      background-color: #fff;
+    }
+    .header {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="header">Quotes</h1>
+    <div class="quote-box">
+      <h1 class="quote-text">“ Time flies over us, but leaves its shadow behind ”</h1>
+    </div>
+    <div class="buttons-box">
+      <button class="like-btn"><i class="fa-solid fa-heart"></i></button>
+      <button class="next-btn">Nexts</button>
+    </div>
+  </div>
+
+
+  <script>
+    const quoteElement = document.querySelector('.quote-text')
+    const nextButton = document.querySelector('.next-btn')
+    const likeButton = document.querySelector('.like-btn')
+
+    const quotes = ["“ Time flies over us, but leaves its shadow behind ”", "“ Treat yourself like someone you love. ”", "“ Don't spend time beating on a wall, hoping to transform it into a door ”", "“ If you don’t love yourself, nobody will. Not only that, you won’t be good at loving anyone else. Loving starts with the self. ”", "“ Each life is made up of mistakes and learning, waiting and growing, practicing patience and being persistent. ”", "“ Forgiveness isn’t just the absence of anger. I think it’s also the presence of self-love, when you actually begin to value yourself. ”"]
+
+    let currentQuote = "";
+
+    function changeQuote() {
+      quoteElement.textContent = quotes[currentQuote]
+
+      currentQuote = (currentQuote + 1) % quotes.length
+
+      likeButton.classList.remove('liked-btn')
+    }
+
+    function likeQuote() {
+      likeButton.classList.toggle('liked-btn')
+    }
+
+
+    likeButton.addEventListener('click', likeQuote)
+    nextButton.addEventListener('click', changeQuote)
+
+  </script>
+
+</body>
+</html>
